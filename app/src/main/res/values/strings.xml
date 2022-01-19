@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">XO Game</string>
+    <string name="text_button_reset">Reset</string>
+</resources>
