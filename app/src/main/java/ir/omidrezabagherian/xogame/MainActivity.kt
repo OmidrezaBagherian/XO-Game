@@ -5,89 +5,70 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import ir.omidrezabagherian.xogame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var cellOne: TextView
-    private lateinit var cellTwo: TextView
-    private lateinit var cellThree: TextView
-    private lateinit var cellFour: TextView
-    private lateinit var cellFive: TextView
-    private lateinit var cellSix: TextView
-    private lateinit var cellSeven: TextView
-    private lateinit var cellEight: TextView
-    private lateinit var cellNine: TextView
-
-    private lateinit var result: TextView
-    private lateinit var reset: Button
+    private lateinit var binding: ActivityMainBinding
 
     private var round = 1
     private var runGame = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        cellOne = findViewById(R.id.text_main_one)
-        cellTwo = findViewById(R.id.text_main_two)
-        cellThree = findViewById(R.id.text_main_three)
-        cellFour = findViewById(R.id.text_main_four)
-        cellFive = findViewById(R.id.text_main_five)
-        cellSix = findViewById(R.id.text_main_six)
-        cellSeven = findViewById(R.id.text_main_seven)
-        cellEight = findViewById(R.id.text_main_eight)
-        cellNine = findViewById(R.id.text_main_nine)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        result = findViewById(R.id.text_main_result)
-        reset = findViewById(R.id.button_reset_game)
+
+        setContentView(binding.root)
 
         setInput()
 
-        reset.setOnClickListener { resetGame() }
+        binding.buttonResetGame.setOnClickListener { resetGame() }
 
     }
 
     fun setInput() {
-        cellOne.setOnClickListener {
-            onBoxClicked(cellOne, round)
+        binding.textMainOne.setOnClickListener {
+            onBoxClicked(binding.textMainOne, round)
         }
-        cellTwo.setOnClickListener {
-            onBoxClicked(cellTwo, round)
+        binding.textMainTwo.setOnClickListener {
+            onBoxClicked(binding.textMainTwo, round)
         }
-        cellThree.setOnClickListener {
-            onBoxClicked(cellThree, round)
+        binding.textMainThree.setOnClickListener {
+            onBoxClicked(binding.textMainThree, round)
         }
-        cellFour.setOnClickListener {
-            onBoxClicked(cellFour, round)
+        binding.textMainFour.setOnClickListener {
+            onBoxClicked(binding.textMainFour, round)
         }
-        cellFive.setOnClickListener {
-            onBoxClicked(cellFive, round)
+        binding.textMainFive.setOnClickListener {
+            onBoxClicked(binding.textMainFive, round)
         }
-        cellSix.setOnClickListener {
-            onBoxClicked(cellSix, round)
+        binding.textMainSix.setOnClickListener {
+            onBoxClicked(binding.textMainSix, round)
         }
-        cellSeven.setOnClickListener {
-            onBoxClicked(cellSeven, round)
+        binding.textMainSeven.setOnClickListener {
+            onBoxClicked(binding.textMainSeven, round)
         }
-        cellEight.setOnClickListener {
-            onBoxClicked(cellEight, round)
+        binding.textMainEight.setOnClickListener {
+            onBoxClicked(binding.textMainEight, round)
         }
-        cellNine.setOnClickListener {
-            onBoxClicked(cellNine, round)
+        binding.textMainNine.setOnClickListener {
+            onBoxClicked(binding.textMainNine, round)
         }
     }
 
     private fun resetGame() {
-        cellOne.text = ""
-        cellTwo.text = ""
-        cellThree.text = ""
-        cellFour.text = ""
-        cellFive.text = ""
-        cellSix.text = ""
-        cellSeven.text = ""
-        cellEight.text = ""
-        cellNine.text = ""
-        result.text = ""
+        binding.textMainOne.text = ""
+        binding.textMainTwo.text = ""
+        binding.textMainThree.text = ""
+        binding.textMainFour.text = ""
+        binding.textMainFive.text = ""
+        binding.textMainSix.text = ""
+        binding.textMainSeven.text = ""
+        binding.textMainEight.text = ""
+        binding.textMainNine.text = ""
+        binding.textMainResult.text = ""
         round = 1
         runGame = true
     }
@@ -118,33 +99,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun winner(word: String) {
-        if (cellOne.text == word && cellTwo.text == word && cellThree.text == word) {
-            result.text = "$word is winner"
+        if (binding.textMainOne.text == word && binding.textMainTwo.text == word && binding.textMainThree.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellFour.text == word && cellFive.text == word && cellSix.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainFour.text == word && binding.textMainFive.text == word && binding.textMainSix.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellSeven.text == word && cellEight.text == word && cellNine.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainSeven.text == word && binding.textMainEight.text == word && binding.textMainNine.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellOne.text == word && cellFour.text == word && cellSeven.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainOne.text == word && binding.textMainFour.text == word && binding.textMainSeven.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellTwo.text == word && cellFive.text == word && cellEight.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainTwo.text == word && binding.textMainFive.text == word && binding.textMainEight.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellThree.text == word && cellSix.text == word && cellNine.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainThree.text == word && binding.textMainSix.text == word && binding.textMainNine.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellOne.text == word && cellFive.text == word && cellNine.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainOne.text == word && binding.textMainFive.text == word && binding.textMainNine.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
-        } else if (cellThree.text == word && cellFive.text == word && cellSeven.text == word) {
-            result.text = "$word is winner"
+        } else if (binding.textMainThree.text == word && binding.textMainFive.text == word && binding.textMainSeven.text == word) {
+            binding.textMainResult.text = "$word is winner"
             runGame = false
         } else {
-            if (round>=9){
-                result.text = "Draw!"
+            if (round >= 9) {
+                binding.textMainResult.text = "Draw!"
                 runGame = false
             }
         }
